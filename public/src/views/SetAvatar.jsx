@@ -9,7 +9,7 @@ import { Buffer } from "buffer";
 import { setAvatarRoute } from "../utils/APIRoutes";
 
 const SetAvatar = () => {
-  const avatarAPI = "https://api.multiavatar.com/4567895";
+  const avatarAPI = "https://api.multiavatar.com";
   const navigate = useNavigate();
   const [avatars, setAvatars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,23 +20,27 @@ const SetAvatar = () => {
     autoClose: 8000,
     pauseOnHover: true,
     draggable: true,
-    theme: "dark"
+    theme: "dark",
   };
 
   const setProfilePicture = async () => {};
-    
-  useEffect(async () => {
-    const data = [];
-    
-    for (let n = 0; n < 4; n++) {
-      const response = await axios.get(`${avatarAPI}/${Math.round(Math.random() * 1000)}`);
-      const buffer = Buffer.from(response.data, "base64");
-      
-      data.push(buffer);
+
+  useEffect(() => {
+    const fetchAvatars = async () => {
+      const data = [];
+
+      for (let n = 0; n < 4; n++) {
+        const response = await axios.get(`${avatarAPI}/${Math.round(Math.random() * 1000)}`);
+        const buffer = new Buffer(response.data);
+
+        data.push(buffer.toString("base64"));
+      }
+
+      setAvatars(data);
+      setIsLoading(false);
     }
-    
-    setAvatars(data);
-    setIsLoading(false);
+
+    fetchAvatars();
   }, []);
 
   return (
@@ -45,21 +49,25 @@ const SetAvatar = () => {
         <div className="title-container">
           <h1>Choose your profile picture</h1>
         </div>
-        <div className="avatars"> {
-          avatars.map((avatar, index) => {
-            return (
-              <div className={`avatar ${setSelectedAvatar(avatar) === index} ? "selected" : ""`} key={index}>
-                <img src={`data:image/svg+xml;base64,${avatar}`} alt="avatar" onClick={() => setSelectedAvatar(index) } />
-              </div>
-            );
-          })
-        } </div>
-        <button class="submit-btn" onClick={() => setProfilePicture()}>Set as profile picture</button>
+        <div className="avatars">
+          {avatars.map((avatar, index) => (
+            <div
+              className={`avatar ${selectedAvatar === index ? "selected" : ""}`}
+              key={index}
+              onClick={() => setSelectedAvatar(index)}
+            >
+              <img src={`data:image/svg+xml;base64,${avatar}`} alt="avatar" key={avatar} onClick={() => setSelectedAvatar(index)} />
+            </div>
+          ))}
+        </div>
+        <button className="submit-btn" onClick={setProfilePicture}>
+          Set as profile picture
+        </button>
       </SetAvatarContainer>
       <ToastContainer />
     </>
   );
-}
+};
 
 const SetAvatarContainer = styled.div`
   width: 100vw;
@@ -91,6 +99,7 @@ const SetAvatarContainer = styled.div`
       justify-content: center;
       align-items: center;
       transition: .5 ease-in-out;
+      cursor: pointer;
 
       img {
         height: 6rem;
@@ -102,7 +111,7 @@ const SetAvatarContainer = styled.div`
     }
   }
 
-  button {
+  .submit-btn {
     background-color: #05B0FF;
     color: white;
     padding: 1rem 2rem;
@@ -112,6 +121,7 @@ const SetAvatarContainer = styled.div`
     border-radius: 0.4rem;
     font-size: 1rem;
     text-transform: uppercase;
+    margin-top: 25px;
 
     &:hover {
       background-color: #05B0FF;
