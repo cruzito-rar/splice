@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Logo from "../assets/logo.png";
+import { registerRoute } from "../utils/APIRoutes";
 
 const Register = () => {
+
+  const navigate = useNavigate();
 
   const [values, setValues] = useState({
     username: "",
@@ -26,8 +29,22 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(handleValidation()) {
-      const {username, email, password, confirmPassword} = values;
-      const {data} = await axios.post();
+      console.log("In validation");
+      const { username, email, password } = values;
+      const { data } = await axios.post(registerRoute, {
+        username,
+        email,
+        password
+      });
+
+      if(data.status === false) {
+        toast.error(data.message, toastOptions);
+      }
+
+      if(data.status === true) {
+        localStorage.setItem("splice-user", JSON.stringify(data.user));
+        navigate("/");
+      }
     }
   }
 
@@ -41,10 +58,10 @@ const Register = () => {
     if (password!== confirmPassword) {
       toast.error("Passwords do not match", toastOptions);
       return false;
-    } else if (username.length < 9 ) {
+    } else if (username.length < 4) {
       toast.error("Username must be at least 9 characters", toastOptions);
       return false;
-    } else if (password.length < 10) {
+    } else if (password.length < 6) {
       toast.error("Password must be at least 10 characters", toastOptions);
       return false;
     } else if(email === "") {
@@ -59,7 +76,6 @@ const Register = () => {
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
-            {/* <img src={Logo} alt="Logo"/> */}
             <h1>Splice</h1>
           </div>
           <input type="text" name="username" onChange={(e) => handleChange(e)} placeholder="Username"/>
@@ -90,10 +106,6 @@ const FormContainer = styled.div`
     align-items: center;
     gap: 1rem;
     justify-content: center;
-
-    img {
-      height: 5rem;
-    }
 
     h1 {
       color: white;
