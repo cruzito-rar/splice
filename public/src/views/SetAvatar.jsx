@@ -51,18 +51,12 @@ const SetAvatar = () => {
         </div>
         <div className="avatars">
           {avatars.map((avatar, index) => (
-            <div
-              className={`avatar ${selectedAvatar === index ? "selected" : ""}`}
-              key={index}
-              onClick={() => setSelectedAvatar(index)}
-            >
+            <div className={`avatar ${selectedAvatar === index ? "selected" : ""}`} key={index} onClick={() => setSelectedAvatar(index)}>
               <img src={`data:image/svg+xml;base64,${avatar}`} alt="avatar" key={avatar} onClick={() => setSelectedAvatar(index)} />
             </div>
           ))}
         </div>
-        <button className="submit-btn" onClick={setProfilePicture}>
-          Set as profile picture
-        </button>
+        <button className="submit-btn" onClick={setProfilePicture}> Set as profile picture </button>
       </SetAvatarContainer>
       <ToastContainer />
     </>
