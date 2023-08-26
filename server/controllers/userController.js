@@ -28,7 +28,29 @@ module.exports.register = async (request, response, next) => {
     
     return response.json({status: true, user});
   } catch(ex) {
-    return response.json({status: false});
+    next(ex);
+  }
+};
+
+module.exports.login = async (request, response, next) => {
+  try {
+    const { username, password } = request.body;
+    const loginUser = await User.findOne({ username });
+
+    if (!loginUser) {
+      return response.json({ message: "Incorrect username or password", status: false });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, loginUser.password);
+
+    if (!isPasswordValid) {
+      return response.json({ message: "Incorrect username or password", status: false });
+    }
+
+    delete loginUser.password;
+
+    return response.json({status: true, loginUser});
+  } catch(ex) {
     next(ex);
   }
 };

@@ -67,6 +67,7 @@ const Register = () => {
       toast.error("Email is required", toastOptions);
       return false;
     }
+    
     return true;
   }
 
