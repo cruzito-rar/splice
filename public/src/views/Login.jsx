@@ -4,7 +4,6 @@ import axios from "axios";
 import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Logo from "../assets/logo.png";
 import { loginRoute } from "../utils/APIRoutes";
 
 const Login = () => {
@@ -24,6 +23,12 @@ const Login = () => {
     theme: "dark"
   }
 
+  useEffect(() => {
+    if (localStorage.getItem("splice-user")) {
+      navigate("/");
+    }
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(handleValidation()) {
@@ -39,7 +44,7 @@ const Login = () => {
       }
 
       if(data.status === true) {
-        localStorage.setItem("splice-user", JSON.stringify(data.user));
+        localStorage.setItem("splice-user", JSON.stringify(data.loginUser));
         navigate("/");
       }
     }
@@ -50,7 +55,7 @@ const Login = () => {
   };
 
   const handleValidation = () => {
-    const {username, password} = values;
+    const { username, password } = values;
 
     if (username.length === "") {
       toast.error("Username and password are required", toastOptions);

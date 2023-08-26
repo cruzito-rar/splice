@@ -4,7 +4,6 @@ import axios from "axios";
 import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Logo from "../assets/logo.png";
 import { registerRoute } from "../utils/APIRoutes";
 
 const Register = () => {
@@ -25,6 +24,12 @@ const Register = () => {
     draggable: true,
     theme: "dark"
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("splice-user")) {
+      navigate("/");
+    }
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -52,7 +57,7 @@ const Register = () => {
   };
 
   const handleValidation = () => {
-    const {username, email, password, confirmPassword} = values;
+    const { username, email, password, confirmPassword } = values;
 
     if (password!== confirmPassword) {
       toast.error("Passwords do not match", toastOptions);
@@ -67,7 +72,7 @@ const Register = () => {
       toast.error("Email is required", toastOptions);
       return false;
     }
-    
+
     return true;
   }
 
