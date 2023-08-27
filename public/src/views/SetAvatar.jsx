@@ -23,17 +23,45 @@ const SetAvatar = () => {
     theme: "dark",
   };
 
-  const setProfilePicture = async () => {};
+  const setProfilePicture = async () => {
+    if (selectedAvatar === undefined) {
+      toast.error("Please select an avatar", toastOptions);
+    } else {
+      const user = await JSON.parse(localStorage.getItem("splice-user"))
+      const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
+        image: avatars[selectedAvatar]
+      });
+
+      if(data.isSet) {
+        user.isAvatarImageSet = true;
+        user.avatarImage = data.image;
+        localStorage.setItem("splice-user", JSON.stringify(user));
+        toast.success("Avatar set", toastOptions);
+        navigate("/");
+      } else {
+        toast.error("Failed to set avatar", toastOptions);
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchAvatars = async () => {
       const data = [];
-
-      for (let n = 0; n < 4; n++) {
-        const response = await axios.get(`${avatarAPI}/${Math.round(Math.random() * 1000)}`);
-        const buffer = new Buffer(response.data);
-
-        data.push(buffer.toString("base64"));
+      
+      for (let n = 0; n < 6; n++) {
+        try {
+          const response = await axios.get(`${avatarAPI}/${Math.round(Math.random() * 1000)}`);
+          const buffer = new Buffer(response.data);
+          data.push(buffer.toString("base64"));
+        } catch (error) {
+          if (error.response && error.response.status === 429) {
+            //* Handle rate limiting, wait for a while and then retry
+            await new Promise(resolve => setTimeout(resolve, 3000)); //* Wait for 3 seconds
+            n--; //* Retry the same iteration
+          } else {
+            console.error("Error fetching avatars:", error);
+          }
+        }
       }
 
       setAvatars(data);
@@ -45,7 +73,11 @@ const SetAvatar = () => {
 
   return (
     <>
-      <SetAvatarContainer>
+    {
+      isLoading ? <SetAvatarContainer>
+        <img className="loader" src={loader} alt="Loading..." />
+      </SetAvatarContainer> : (
+        <SetAvatarContainer>
         <div className="title-container">
           <h1>Choose your profile picture</h1>
         </div>
@@ -58,6 +90,8 @@ const SetAvatar = () => {
         </div>
         <button className="submit-btn" onClick={setProfilePicture}> Set as profile picture </button>
       </SetAvatarContainer>
+      )
+    }
       <ToastContainer />
     </>
   );
