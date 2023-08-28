@@ -72,6 +72,7 @@ const ChatContainer = styled.div`
     height: 85vh;
     width: 85vw;
     background-color: #00000076;
+    border-radius: 20px;
     display: grid;
     grid-template-columns: 25% 75%;
 

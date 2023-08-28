@@ -26,25 +26,23 @@ const Contacts = ({ contacts, currentUser, changeChat }) => {
       <ContactsContainer>
         <div className="brand">
           {/* <img src={Logo} alt="Logo" /> */}
-          <h3>Splice</h3>
+          <h3>SPLICE</h3>
         </div>
         <div className="contacts">
-          {contacts.length > 0 ? (
-            contacts.map((contact, index) => {
-              return (
-                <div className={`contact ${index === currentSelected ? "selected" : ""}`} key={index}>
-                <div className="avatar">
-                  <img src={`data:image/svg+xml;base64,${contact.avatarImage}`} alt={contact.username} />
-                </div>
-                <div className="username">
-                  <h3>{contact.username}</h3>
-                </div>
+          {
+          contacts.map((contact, index) => {
+            return (
+            <div className={`contact ${index === currentSelected ? "selected" : ""}`} key={index} onClick={() => changeCurrentChat(index, contact) }>
+              <div className="avatar">
+                <img src={`data:image/svg+xml;base64,${contact.avatarImage}`} alt={contact.username} />
               </div>
-              )
-            })
-          ) : (
-            <p style={{"color" : "#FFFFFF"}}>No contacts available.</p>
-          )}
+              <div className="username">
+                <h3>{contact.username}</h3>
+              </div>
+            </div>
+            )
+          })
+          }
         </div>
         <div className="current-user">
           <div className="avatar">
@@ -67,14 +65,17 @@ const ContactsContainer = styled.div`
   grid-template-rows: 10% 75% 15%;
   overflw: hidden;
   background-color: #080420;
+  border-radius: 20px 0 0 20px;
 
   .brand {
     display: flex;
     justify-content: center;
     align-items: center;
+
     img {
       height: 2rem;
     }
+
     h3 {
       color: #FFFFFF;
       text-transform: uppercase;
@@ -124,7 +125,7 @@ const ContactsContainer = styled.div`
     }
 
     .selected {
-      background-color: #DAF3FF;
+      background-color: #05B0FF;
     }
   }
 
@@ -134,6 +135,7 @@ const ContactsContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    border-radius: 0 0 0 20px;
     
     .avatar {
       img {
