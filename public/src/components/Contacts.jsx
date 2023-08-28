@@ -8,7 +8,6 @@ const Contacts = ({ contacts, currentUser, changeChat }) => {
   const [currentSelected, setCurrentSelected] = useState(undefined);
   
   useEffect(() => {
-    console.log(contacts);
     if (currentUser) {
       setCurrentUserName(currentUser.username);
       setCurrentUserImage(currentUser.avatarImage);
@@ -109,7 +108,7 @@ const ContactsContainer = styled.div`
       gap: 1rem;
       align-items: center;
       border-radius: 20px;
-      transition: all .5s ease-in-out;
+      transition: all .3s ease-in-out;
 
       .avatar {
         img {

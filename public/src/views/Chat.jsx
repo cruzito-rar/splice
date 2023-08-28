@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { allusersRoute } from "../utils/APIRoutes";
 import Contacts from "../components/Contacts";
+import Welcome from "../components/Welcome";
 
 const Chat = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Chat = () => {
             const response = await axios.get(`${allusersRoute}/${currentUser._id}`);
             setContacts(response.data);
           } catch (error) {
-            // Manejar errores aquí
+           
           }
         } else {
           navigate("/setAvatar");
@@ -52,6 +53,7 @@ const Chat = () => {
     <ChatContainer>
       <div className="container">
         <Contacts contacts={ contacts } currentUser={ currentUser } changeChat={ handleChatChange }/>
+        <Welcome currentUser={ currentUser }/>
       </div>
     </ChatContainer>
     </>
