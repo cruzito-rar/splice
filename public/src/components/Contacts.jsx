@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Logo from "../assets/logo.png";
 
-const Contacts = ({ contacts, currentUser }) => {
+const Contacts = ({ contacts, currentUser, changeChat }) => {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
-  const [currentSelected, setCurrentUserSelected] = useState(undefined);
+  const [currentSelected, setCurrentSelected] = useState(undefined);
   
   useEffect(() => {
     console.log(contacts);
@@ -14,6 +14,11 @@ const Contacts = ({ contacts, currentUser }) => {
       setCurrentUserImage(currentUser.avatarImage);
     }
   }, [currentUser]);
+
+  const changeCurrentChat = (index, contact) => {
+    setCurrentSelected(index);
+    changeChat(contact);
+  }
 
   return (
     <>
@@ -25,8 +30,9 @@ const Contacts = ({ contacts, currentUser }) => {
         </div>
         <div className="contacts">
           {contacts.length > 0 ? (
-            contacts.map((contact, index) => (
-              <div className={`contact ${index === currentSelected ? "selected" : ""}`} key={index}>
+            contacts.map((contact, index) => {
+              return (
+                <div className={`contact ${index === currentSelected ? "selected" : ""}`} key={index}>
                 <div className="avatar">
                   <img src={`data:image/svg+xml;base64,${contact.avatarImage}`} alt={contact.username} />
                 </div>
@@ -34,7 +40,8 @@ const Contacts = ({ contacts, currentUser }) => {
                   <h3>{contact.username}</h3>
                 </div>
               </div>
-            ))
+              )
+            })
           ) : (
             <p style={{"color" : "#FFFFFF"}}>No contacts available.</p>
           )}
@@ -80,16 +87,27 @@ const ContactsContainer = styled.div`
     align-items: center;
     overflow: auto;
     gap: .8rem;
+    
+    &::webkit-scrollbar {
+      width: .2rem;
+
+      &-thumb {
+        background-color: #FFFFFF39;
+        width: .1rem;
+        border-radius: 1rem;
+      }
+    }
 
     .contact {
       display: flex;
       background-color: #FFFFFF39;
       min-height: 5rem;
-      width: 90%;
+      width: 95%;
       cursor: pointer; 
       padding: .4rem;
       gap: 1rem;
       align-items: center;
+      border-radius: 20px;
       transition: all .5s ease-in-out;
 
       .avatar {
@@ -127,6 +145,16 @@ const ContactsContainer = styled.div`
     .username {
       h2 {
         color: #FFFFFF;
+      }
+    }
+
+    @media screen and (min-width: 720px) and (max-width: 1000px) {
+      gap: .5rem;
+
+      .username {
+        h2 {
+          font-size: 1rem;
+        }
       }
     }
   }

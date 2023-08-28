@@ -79,7 +79,7 @@ module.exports.getAllUsers = async (request, response, next) => {
       "_id"
     ]);
 
-    return response.json({users});
+    return response.json(users);
   } catch(ex) {
     next(ex);
   }

@@ -8,8 +8,8 @@ import Contacts from "../components/Contacts";
 const Chat = () => {
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
-  const [currentChat, setcurrentChat] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [currentChat, setcurrentChat] = useState(undefined);
 
   useEffect(() => {
     async function checkLocalStorage() {
@@ -42,13 +42,16 @@ const Chat = () => {
   
     fetchData();
   }, [currentUser]);
-  
+
+  const handleChatChange = (chat) => {
+    setcurrentChat(chat);
+  }
 
   return (
     <>
     <ChatContainer>
       <div className="container">
-        <Contacts contacts={ contacts } currentUser={ currentUser }/>
+        <Contacts contacts={ contacts } currentUser={ currentUser } changeChat={ handleChatChange }/>
       </div>
     </ChatContainer>
     </>
