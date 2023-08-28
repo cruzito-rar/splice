@@ -5,20 +5,22 @@ import { useNavigate } from "react-router-dom";
 import { allusersRoute } from "../utils/APIRoutes";
 import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
+import ChatContainer from "../components/ChatContainer";
 
 const Chat = () => {
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
   const [currentUser, setCurrentUser] = useState(undefined);
   const [currentChat, setcurrentChat] = useState(undefined);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     async function checkLocalStorage() {
       if (!localStorage.getItem("splice-user")) {
         navigate("/login");
       } else {
-        const userData = JSON.parse(localStorage.getItem("splice-user"));
-        setCurrentUser(userData);
+        setCurrentUser(JSON.parse(localStorage.getItem("splice-user")));
+        setIsLoaded(true);
       }
     }
   
@@ -50,17 +52,19 @@ const Chat = () => {
 
   return (
     <>
-    <ChatContainer>
+    <Container>
       <div className="container">
         <Contacts contacts={ contacts } currentUser={ currentUser } changeChat={ handleChatChange }/>
-        <Welcome currentUser={ currentUser }/>
+        {
+          isLoaded && currentChat === undefined ? <Welcome currentUser={ currentUser }/> : <ChatContainer currentChat={ currentChat }/>
+        }
       </div>
-    </ChatContainer>
+    </Container>
     </>
   )
 }
 
-const ChatContainer = styled.div`
+const Container = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;

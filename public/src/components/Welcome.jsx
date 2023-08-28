@@ -7,7 +7,7 @@ const Welcome = ({ currentUser }) => {
     <>
       <WelcomeContainer>
         <img src={Robot} alt="robot" />
-        <h1>Welcome, <span> {currentUser.username }! </span> </h1>
+        <h1>Welcome, <span> { currentUser.username }! </span> </h1>
         <h3> Start a new conversation </h3>
       </WelcomeContainer>
     </>
