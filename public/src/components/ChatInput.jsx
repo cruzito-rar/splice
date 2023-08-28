@@ -4,29 +4,27 @@ import { IoMdSend } from "react-icons/io";
 import styled from "styled-components";
 import Picker from "emoji-picker-react";
 
-export default function ChatInput({ handleSendMsg }) {
-  const [msg, setMsg] = useState("");
+const ChatInput = ({ handleSendMsg }) => {
+  const [message, setMessage] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const handleEmojiPickerhideShow = () => {
     setShowEmojiPicker(!showEmojiPicker);
   };
 
-  const handleEmojiClick = (event, emojiObject) => {
-    let message = msg;
-    message += emojiObject.emoji;
-    setMsg(message);
+  const handleEmojiClick = (emoji) => {
+    setMessage(msg => msg + emoji.emoji);
   };
 
   const sendChat = (event) => {
     event.preventDefault();
-    if (msg.length > 0) {
-      handleSendMsg(msg);
-      setMsg("");
+    if (message.length > 0) {
+      handleSendMsg(message);
+      setMessage("");
     }
   };
 
   return (
-    <Container>
+    <ChatInputContainer>
       <div className="button-container">
         <div className="emoji">
           <BsEmojiSmileFill onClick={handleEmojiPickerhideShow} />
@@ -36,19 +34,21 @@ export default function ChatInput({ handleSendMsg }) {
       <form className="input-container" onSubmit={(event) => sendChat(event)}>
         <input
           type="text"
-          placeholder="type your message here"
-          onChange={(e) => setMsg(e.target.value)}
-          value={msg}
+          placeholder="Write a message"
+          onChange={(e) => setMessage(e.target.value)}
+          value={message}
         />
         <button type="submit">
           <IoMdSend />
         </button>
       </form>
-    </Container>
+    </ChatInputContainer>
   );
 }
 
-const Container = styled.div`
+export default ChatInput;
+
+const ChatInputContainer = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 5% 95%;
