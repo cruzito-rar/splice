@@ -1,47 +1,69 @@
 import React, { useState } from "react";
+import { BsEmojiSmileFill } from "react-icons/bs";
+import { IoMdSend } from "react-icons/io";
 import styled from "styled-components";
 import Picker from "emoji-picker-react";
-import { IoMdSend } from "react-icons/io";
-import { BsEmojiSmileFill } from "react-icons/bs";
 
+export default function ChatInput({ handleSendMsg }) {
+  const [msg, setMsg] = useState("");
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const handleEmojiPickerhideShow = () => {
+    setShowEmojiPicker(!showEmojiPicker);
+  };
 
-const ChatInput = () => {
+  const handleEmojiClick = (event, emojiObject) => {
+    let message = msg;
+    message += emojiObject.emoji;
+    setMsg(message);
+  };
+
+  const sendChat = (event) => {
+    event.preventDefault();
+    if (msg.length > 0) {
+      handleSendMsg(msg);
+      setMsg("");
+    }
+  };
+
   return (
-    <>
-      <ChatInputContainer>
-        <div className="button-container">
-          <div className="emoji">
-            <BsEmojiSmileFill />
-          </div>
+    <Container>
+      <div className="button-container">
+        <div className="emoji">
+          <BsEmojiSmileFill onClick={handleEmojiPickerhideShow} />
+          {showEmojiPicker && <Picker onEmojiClick={handleEmojiClick} />}
         </div>
-
-        <form className="input-container">
-          <input type="text" placeholder="Write a message" />
-          <button className="submit">
-            <IoMdSend />
-          </button>
-        </form>
-      </ChatInputContainer>
-    </>
-  )
+      </div>
+      <form className="input-container" onSubmit={(event) => sendChat(event)}>
+        <input
+          type="text"
+          placeholder="type your message here"
+          onChange={(e) => setMsg(e.target.value)}
+          value={msg}
+        />
+        <button type="submit">
+          <IoMdSend />
+        </button>
+      </form>
+    </Container>
+  );
 }
 
-export default ChatInput;
-
-const ChatInputContainer = styled.div`
-  height: 10.3%;
+const Container = styled.div`
   display: grid;
-  grid-template-columns: 5% 95%;
   align-items: center;
-  background-color: #4A4A64;
+  grid-template-columns: 5% 95%;
+  background-color: #080420;
   padding: 0 2rem;
-  padding-bottom: .3rem;
   
+  @media screen and (min-width: 720px) and (max-width: 1080px) {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
   .button-container {
     display: flex;
     align-items: center;
-    justify-items: center;
-    color: #FFFFFF;
+    color: white;
     gap: 1rem;
 
     .emoji {
@@ -49,8 +71,40 @@ const ChatInputContainer = styled.div`
 
       svg {
         font-size: 1.5rem;
-        color: #05B0FF;
+        color: #50C8FF;
         cursor: pointer;
+      }
+
+      .emoji-picker-react {
+        position: absolute;
+        top: -350px;
+        background-color: #080420;
+        box-shadow: 0 5px 10px #9a86f3;
+        border-color: #9a86f3;
+
+        .emoji-scroll-wrapper::-webkit-scrollbar {
+          background-color: #080420;
+          width: 5px;
+
+          &-thumb {
+            background-color: #9a86f3;
+          }
+        }
+        
+        .emoji-categories {
+          button {
+            filter: contrast(0);
+          }
+        }
+
+        .emoji-search {
+          background-color: transparent;
+          border-color: #50C8FF;
+        }
+
+        .emoji-group:before {
+          background-color: #080420;
+        }
       }
     }
   }
@@ -59,21 +113,21 @@ const ChatInputContainer = styled.div`
     width: 100%;
     border-radius: 2rem;
     display: flex;
-    align-content: center;
+    align-items: center;
     gap: 2rem;
-    background-color: #FFFFFF34;
+    background-color: #ffffff34;
 
     input {
       width: 90%;
       height: 60%;
       background-color: transparent;
-      color: #FFFFFF;
+      color: white;
       border: none;
       padding-left: 1rem;
       font-size: 1.2rem;
 
       &::selection {
-        background-color: #918673;
+        background-color: #9a86f3;
       }
 
       &:focus {
@@ -82,15 +136,24 @@ const ChatInputContainer = styled.div`
     }
 
     button {
-      padding: .3rem 2rem;
+      padding: 0.3rem 2rem;
       border-radius: 2rem;
       display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: #50C8FF;
       border: none;
-      
+
+      @media screen and (min-width: 720px) and (max-width: 1080px) {
+        padding: 0.3rem 1rem;
+        svg {
+          font-size: 1rem;
+        }
+      }
+
       svg {
         font-size: 2rem;
-        color: #FFFFFF;
+        color: white;
       }
     }
   }
