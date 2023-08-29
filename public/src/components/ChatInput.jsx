@@ -120,7 +120,6 @@ const ChatInputContainer = styled.div`
 
     input {
       width: 90%;
-      
       background-color: transparent;
       color: white;
       border: none;
