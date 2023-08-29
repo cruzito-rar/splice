@@ -6,7 +6,7 @@ module.exports.addMessage = async (request, response, next) => {
     const data = await Messages.create({
       users : [from, to],
       message : {
-        text: message
+        text : message
       },
       sender : from
     });
@@ -18,4 +18,24 @@ module.exports.addMessage = async (request, response, next) => {
   }
 }
 
-module.exports.getAllMessages = async (request, response, next) => {}
+module.exports.getAllMessages = async (request, response, next) => {
+  try {
+    const { from, to } = request.body;
+    const messages = await Messages.find({
+      users : {
+        $all : [from, to]
+      }
+    }).sort({ updatedAt : 1 });
+
+    const showMessages = messages.map((message) => {
+      return {
+        fromSelf : message.sender.toString() === from,
+        message : message.message.text
+      }
+    });
+
+    return response.json(showMessages);
+  } catch(ex) {
+    next(ex);
+  }
+}

@@ -30,6 +30,10 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
 
+  &:hover {
+    background-color: #44C4FF;
+  }
+
   svg {
     font-size: 1.3rem;
     color: #FFFFFF;

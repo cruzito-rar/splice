@@ -110,6 +110,10 @@ const ContactsContainer = styled.div`
       border-radius: 20px;
       transition: all .3s ease-in-out;
 
+      &:hover {
+        background-color: #44C4FF;
+      }
+
       .avatar {
         img {
           height: 3rem;
