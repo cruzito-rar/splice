@@ -88,7 +88,7 @@ const ContactsContainer = styled.div`
     overflow: auto;
     gap: .8rem;
     
-    &::webkit-scrollbar {
+    &::-webkit-scrollbar {
       width: .2rem;
 
       &-thumb {
