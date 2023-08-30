@@ -94,7 +94,7 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #047BB3;
 
   .brand {
     display: flex;
@@ -130,6 +130,10 @@ const FormContainer = styled.div`
       border: 0.1rem solid #82D8FF;
       outline: none;
     }
+
+    &::placeholder {
+      color: #FFFFFF;
+    }
   }
 
   button {
@@ -142,9 +146,11 @@ const FormContainer = styled.div`
     border-radius: 0.4rem;
     font-size: 1rem;
     text-transform: uppercase;
+    transition: .3s ease-in-out;
+    border: 2px solid #05b0ff;
 
     &:hover {
-      background-color: #05B0FF;
+      background-color: #035880;
     }
   }
 
@@ -156,6 +162,11 @@ const FormContainer = styled.div`
       color: #05B0FF;
       text-decoration: none;
       font-weight: bold;
+      transition: .3s ease-in-out;
+
+      &:hover {
+        color: #047BB3;
+      }
     }
   }
 `;

@@ -151,7 +151,7 @@ const ChatInputContainer = styled.div`
       transition: .3s ease-in-out;
 
       &:hover {
-        background-color: #44C4FF;
+        background-color: #035880;
       }
 
       @media screen and (min-width: 720px) and (max-width: 1080px) {

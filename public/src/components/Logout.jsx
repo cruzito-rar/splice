@@ -29,10 +29,10 @@ const Button = styled.button`
   background-color: #05B0FF;
   border: none;
   cursor: pointer;
-  transition .3s ease-in-out;
+  transition: .3s ease-in-out;
 
   &:hover {
-    background-color: #44C4FF;
+    background-color: #035880;
   }
 
   svg {
