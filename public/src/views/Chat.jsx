@@ -68,6 +68,9 @@ const Chat = () => {
           isLoaded && currentChat === undefined ? <Welcome currentUser={ currentUser }/> : <ChatContainer currentChat={ currentChat } currentUser={ currentUser } socket={ socket } />
         }
       </div>
+      <footer>
+      <p style={{color : "#FFFFFF"}}> 🪐 by<a href="https://github.com/cruzito-rar" target="_blank" style={{"color": "#FFFFFF", fontWeight : "bold", textDecoration : "none"}}> cruzito.rar </a> </p>
+    </footer>
     </Container>
     </>
   )
