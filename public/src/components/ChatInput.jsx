@@ -53,7 +53,7 @@ const ChatInputContainer = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 5% 95%;
-  background-color: #080420;
+  background-color: #02354D;
   padding: 0 2rem;
   
   @media screen and (min-width: 720px) and (max-width: 1080px) {
@@ -133,6 +133,10 @@ const ChatInputContainer = styled.div`
       &:focus {
         outline: none;
       }
+
+      &::placeholder {
+        color: #FFFFFF;
+      }
     }
 
     button {
@@ -144,6 +148,7 @@ const ChatInputContainer = styled.div`
       background-color: #05B0FF;
       border: none;
       cursor: pointer;
+      transition: .3s ease-in-out;
 
       &:hover {
         background-color: #44C4FF;

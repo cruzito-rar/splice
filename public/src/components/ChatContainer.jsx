@@ -149,6 +149,7 @@ const MessagesContainer = styled.div`
 
     &::-webkit-scrollbar {
       width: .2rem;
+
       &-thumb {
         background-color: #FFFFFF39;
         width: .1rem;
@@ -184,6 +185,7 @@ const MessagesContainer = styled.div`
 
       .content {
         background-color: #059EE6;
+        color: #FFFFFF;
       }
     }
   }

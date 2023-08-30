@@ -63,7 +63,7 @@ const ContactsContainer = styled.div`
   display: grid;
   grid-template-rows: 10% 75% 15%;
   overflw: hidden;
-  background-color: #080420;
+  background-color: #02354D;
   border-radius: 20px 0 0 20px;
 
   .brand {
@@ -134,15 +134,16 @@ const ContactsContainer = styled.div`
 
   .current-user {
     display: flex;
-    background-color: #4A4A64;
+    background-color: #012C40;
     justify-content: center;
     align-items: center;
     gap: 2rem;
     border-radius: 0 0 0 20px;
+    cursor: pointer;
     
     .avatar {
       img {
-        height: 4rem;
+        height: 3rem;
         max-inline-size: 100%
       }
     }
