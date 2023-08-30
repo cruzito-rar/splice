@@ -112,7 +112,7 @@ const SetAvatarContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #131324;
+  background-color: #047BB3;
   justify-content: center;
   align-items: center;
   gap: 3rem
@@ -128,6 +128,7 @@ const SetAvatarContainer = styled.div`
   .avatars {
     display: flex;
     gap: 2rem;
+    margin-top: 25px;
 
     .avatar {
       border: .4rem solid transparent;
@@ -145,7 +146,7 @@ const SetAvatarContainer = styled.div`
     }
 
     .selected {
-      border: .4rem solid #05B0FF;
+      border: .4rem solid #50C8FF;
     }
   }
 
@@ -160,9 +161,11 @@ const SetAvatarContainer = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     margin-top: 25px;
+    transition: .3s ease-in-out;
+    border: 2px solid #05B0FF;
 
     &:hover {
-      background-color: #05B0FF;
+      background-color: #035880;
     }
   }
 `;
