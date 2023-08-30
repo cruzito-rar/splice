@@ -128,7 +128,7 @@ const MessagesContainer = styled.div`
 
       .avatar {
         img {
-          height: 3rem;
+          height: 2.5rem;
         }
       }
 
@@ -165,7 +165,7 @@ const MessagesContainer = styled.div`
         max-width: 40%;
         overflow-wrap: break-word;
         padding: 1rem;
-        font-size: 1.1rem;
+        font-size: 1rem;
         border-radius: 1rem;
         color: #D1D1D1;
       }
@@ -177,6 +177,7 @@ const MessagesContainer = styled.div`
       .content {
         background-color: #37C0FF;
         color: #FFFFFF;
+        font-size: .8rem;
       }
     }
 
@@ -186,6 +187,7 @@ const MessagesContainer = styled.div`
       .content {
         background-color: #059EE6;
         color: #FFFFFF;
+        font-size: .8rem;
       }
     }
   }

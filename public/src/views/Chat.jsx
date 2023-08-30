@@ -69,7 +69,7 @@ const Chat = () => {
         }
       </div>
       <footer>
-      <p style={{color : "#FFFFFF"}}> 🪐 by<a href="https://github.com/cruzito-rar" target="_blank" style={{"color": "#FFFFFF", fontWeight : "bold", textDecoration : "none"}}> cruzito.rar </a> </p>
+      <p> 🪐 by<a href="https://github.com/cruzito-rar" target="_blank"> cruzito.rar </a> </p>
     </footer>
     </Container>
     </>
@@ -90,12 +90,22 @@ const Container = styled.div`
     height: 85vh;
     width: 85vw;
     background-color: #00000076;
-    border-radius: 20px;
+    border-radius: 20px 20px 20px 20px;
     display: grid;
     grid-template-columns: 25% 75%;
 
     @media screen and (min-width: 720px) and (max-width: 1000px) {
       grid-template-columns: 35% 65%;
+    }
+  }
+
+  footer {
+    color: #FFFFFF;
+
+    a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: bold;
     }
   }
 `;

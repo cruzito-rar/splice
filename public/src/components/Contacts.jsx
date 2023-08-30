@@ -62,7 +62,7 @@ export default Contacts;
 const ContactsContainer = styled.div`
   display: grid;
   grid-template-rows: 10% 75% 15%;
-  overflw: hidden;
+  overflow: hidden;
   background-color: #02354D;
   border-radius: 20px 0 0 20px;
 
@@ -86,7 +86,7 @@ const ContactsContainer = styled.div`
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    gap: .8rem;
+    gap: .5rem;
     
     &::-webkit-scrollbar {
       width: .2rem;
@@ -107,7 +107,7 @@ const ContactsContainer = styled.div`
       padding: .4rem;
       gap: 1rem;
       align-items: center;
-      border-radius: 20px;
+      border-radius: 0px;
       transition: all .3s ease-in-out;
 
       &:hover {
@@ -116,13 +116,14 @@ const ContactsContainer = styled.div`
 
       .avatar {
         img {
-          height: 3rem;
+          height: 2.5rem;
         }
       }
 
       .username {
         h3 {
           color: #FFFFFF;
+          font-size: 15px;
         }
       }
     }
@@ -143,7 +144,7 @@ const ContactsContainer = styled.div`
     
     .avatar {
       img {
-        height: 3rem;
+        height: 2.5rem;
         max-inline-size: 100%
       }
     }
@@ -151,6 +152,7 @@ const ContactsContainer = styled.div`
     .username {
       h2 {
         color: #FFFFFF;
+        font-size: 20px;
       }
     }
 

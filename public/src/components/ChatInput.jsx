@@ -55,6 +55,7 @@ const ChatInputContainer = styled.div`
   grid-template-columns: 5% 95%;
   background-color: #02354D;
   padding: 0 2rem;
+  border-radius: 0 0 20px 0;
   
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     padding: 0 1rem;
@@ -116,7 +117,7 @@ const ChatInputContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 2rem;
-    background-color: #ffffff34;
+    background-color: #FFFFFF34;
 
     input {
       width: 90%;
@@ -124,10 +125,10 @@ const ChatInputContainer = styled.div`
       color: white;
       border: none;
       padding-left: 1rem;
-      font-size: 1.2rem;
+      font-size: 1rem;
 
       &::selection {
-        background-color: #9a86f3;
+        background-color: #9A86F3;
       }
 
       &:focus {
