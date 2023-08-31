@@ -1,62 +1,81 @@
-# Splice Chat - Aplicación de Chat Personal
+# Splice Chat - Personal Chat Application
 
 ![logo](https://github.com/cruzito-rar/splice/assets/54298536/e808a9e9-e60d-443c-aa3e-491493b569d9)
 
-Splice Chat es una aplicación de chat diseñada para un uso personal y desarrollada con tecnologías modernas. Te permite conectarte con tus amigos y familiares de una manera sencilla y cómoda. La aplicación ha sido creada utilizando las siguientes tecnologías:
+Splice Chat is a chat application designed for personal use and developed with modern technologies. It allows you to connect with your friends and family in a simple and convenient way. The application has been created using the following technologies:
 
-- **Front-end**: Desarrollado en React JS, Splice Chat ofrece una experiencia de usuario fluida y receptiva en la interfaz de usuario. Esto permite una navegación sin problemas y una interacción intuitiva.
+- **Front-end**: Developed in React JS, Splice Chat offers a fluid and responsive user experience in the UI. This allows a smooth navigation and intuitive interaction.
 
-- **Back-end**: El backend de Splice Chat está construido con Node.js y utiliza la biblioteca Socket.io para habilitar la comunicación en tiempo real entre los usuarios. Esto garantiza que los mensajes se entreguen instantáneamente y permite una experiencia de chat en vivo.
+- **Back-end**: The Splice Chat backend is built with Node.js and uses the Socket.io library to enable real-time communication between users. This ensures that messages are delivered instantly and enables a live chat experience.
 
-- **Base de datos**: La información de los usuarios y los mensajes se almacenan de manera eficiente en MongoDB. Esto asegura la persistencia de los datos y permite acceder fácilmente a las conversaciones anteriores.
+- **Base de datos**: User information and messages are efficiently stored in MongoDB. This ensures data persistence and allows easy access to past conversations.
 
-## Características Principales
+## Main Features
 
-### Inicio de Sesión y Registro
+### Login and Registration.
 
 ![image1](https://github.com/cruzito-rar/splice/assets/54298536/7bced348-071d-4b24-b717-91cf93fdfc4c)
 ![image2](https://github.com/cruzito-rar/splice/assets/54298536/d5abb1a9-967c-4db4-8164-842d9bd3f5af)
 
-Splice Chat ofrece un proceso de inicio de sesión y registro simple y seguro. Puedes acceder con tus credenciales existentes o crear una nueva cuenta en cuestión de segundos.
+Splice Chat offers a simple and secure login and registration process. You can login with your existing credentials or create a new account in seconds.
 
-### Selección de Avatar
+### Avatar Selection
 
 ![image3](https://github.com/cruzito-rar/splice/assets/54298536/ea64eb2f-938b-40d7-b1e0-86868f5829ac)
 
-Al configurar tu perfil por primera vez, tendrás la oportunidad de personalizar tu experiencia seleccionando un avatar único. Esto añade un toque personalizado a tus conversaciones.
+When setting up your profile for the first time, you will have the opportunity to customize your experience by selecting a unique avatar. This adds a personalized touch to your conversations.
 
-### Área de Bienvenida
+### Welcome Area
 
 ![image4](https://github.com/cruzito-rar/splice/assets/54298536/58e08ced-fc52-4445-8325-f62e3d11d208)
 
-Después de iniciar sesión, serás recibido con un área de bienvenida personalizada. Aquí podrás ver una vista general de tus conversaciones recientes y acceder rápidamente a ellas.
+After logging in, you will be greeted with a personalized welcome area. Here you can see an overview of your recent conversations and quickly access them.
 
 ### Chat en Tiempo Real
 
 ![image5](https://github.com/cruzito-rar/splice/assets/54298536/5ccee465-7c7d-4b5c-ac1a-7887340305cd)
 
 
-La función principal de Splice Chat es brindarte una plataforma de chat en tiempo real. Puedes conversar con amigos y familiares, compartir mensajes, enlaces y emojis, todo con una entrega instantánea.
+The main function of Splice Chat is to provide you with a real-time chat platform. You can chat with friends and family, share messages, links and emojis, all with instant delivery.
 
-## Instalación y Uso
+## Installation & Use
 
-Si deseas ejecutar Splice Chat en tu entorno local, sigue estos pasos:
+If you want to run Splice Chat in your local environment, follow these steps:
 
-1. Clona este repositorio: `git clone https://github.com/tuusuario/splice.git`
-2. Instala las dependencias del servidor: `cd splice/server && npm yarn -g install`
-3. Instala las dependencias del cliente: `cd splice/public && npm yarn -g install`
-4. Inicia el servidor: `yarn start || npm start`
-5. Inicia la aplicación cliente: `yarn start || npm start`
+1. Clone this repository:
+```
+git clone https://github.com/cruzito-rar/splice.git
+```
+   
+2. Install the server dependencies:
+```
+cd splice/server && npm yarn -g install
+```
 
-### ¡Te Damos la Bienvenida!
-Splice Chat está diseñado para hacer que la comunicación sea más que una simple conversación. Es una experiencia que une a las personas sin importar dónde se encuentren. Así que ¡adelante! Inicia sesión, personaliza tu perfil y comienza a explorar nuevas formas de conectarte con tus seres queridos.
+3. Install the client dependencies:
+```
+cd splice/public && npm yarn -g install
+```
 
-¡Gracias por unirte a la comunidad de Splice Chat!
+4. Starts the server:
+```
+yarn start || npm start
+```
 
-## Contribuciones
+5. Start the client application:
+```
+yarn start || npm start
+```
 
-¡Splice Chat es un proyecto personal y no está abierto a contribuciones en este momento! Sin embargo, si encuentras problemas o tienes sugerencias, siéntete libre de abrir un problema en el repositorio.
+### Welcome!
+Splice Chat is designed to make communication more than just a conversation. It's an experience that brings people together no matter where they are. So go ahead! Log in, customize your profile and start exploring new ways to connect with your loved ones.
+
+Thanks for joining the Splice Chat community!
+
+## Contributions
+
+Simplice Chat is a personal project and is not open for contributions at this time! However, if you encounter problems or have suggestions, feel free to open an issue in the repository.
 
 ---
 
-¡Disfruta de tus conversaciones en tiempo real con Splice Chat! Una aplicación de chat simple y personal desarrollada con tecnologías modernas.
+Enjoy your conversations in real time with Splice Chat! A simple and personal chat application developed with modern technologies.
