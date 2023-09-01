@@ -27,7 +27,7 @@ When setting up your profile for the first time, you will have the opportunity t
 
 ### Welcome Area
 
-![image4](https://github.com/cruzito-rar/splice/assets/54298536/58e08ced-fc52-4445-8325-f62e3d11d208)
+![image4](https://github.com/cruzito-rar/splice/assets/54298536/ea715e85-0c04-4e84-9e54-0c6c987fafea)
 
 After logging in, you will be greeted with a personalized welcome area. Here you can see an overview of your recent conversations and quickly access them.
 
