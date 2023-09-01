@@ -8,7 +8,7 @@ Splice Chat is a chat application designed for personal use and developed with m
 
 - **Back-end**: The Splice Chat backend is built with Node.js and uses the Socket.io library to enable real-time communication between users. This ensures that messages are delivered instantly and enables a live chat experience.
 
-- **Base de datos**: User information and messages are efficiently stored in MongoDB. This ensures data persistence and allows easy access to past conversations.
+- **Database**: User information and messages are efficiently stored in MongoDB. This ensures data persistence and allows easy access to past conversations.
 
 ## Main Features
 
@@ -31,10 +31,9 @@ When setting up your profile for the first time, you will have the opportunity t
 
 After logging in, you will be greeted with a personalized welcome area. Here you can see an overview of your recent conversations and quickly access them.
 
-### Chat en Tiempo Real
+### Real Time Chat
 
 ![image5](https://github.com/cruzito-rar/splice/assets/54298536/5ccee465-7c7d-4b5c-ac1a-7887340305cd)
-
 
 The main function of Splice Chat is to provide you with a real-time chat platform. You can chat with friends and family, share messages, links and emojis, all with instant delivery.
 
